@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Login - Estácio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1e8ce;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        .card-login {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .card-login h1 {
+            font-family: 'Playfair Display', serif;
+            color: #203448;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #203448;
+        }
+
+        .btn-entrar {
+            width: 100%;
+            padding: 15px;
+            background-color: #c5a056;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-entrar:hover {
+            background-color: #a8843d;
+        }
+
+        .cadastro-link {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .cadastro-link a {
+            color: #203448;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .cadastro-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="card-login" id="loginCard">
+            <h1>Bem-vindo</h1>
+            <form id="LoginForm">
+                <input type="email" placeholder="E-mail" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit" class="btn-entrar">Entrar</button>
+            </form>
+
+            <p class="cadastro-link">
+                É novo aqui? <a href="#" id="irParaCadastro">Cadastre-se</a>
+            </p>
+        </div>
+
+        <div class="card-login" id="registroCard" style="display: none;">
+            <h1>Criar Conta</h1>
+            <form>
+                <input type="text" placeholder="Nome Completo" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="tel" placeholder="Telefone" required>
+                <input type="password" placeholder="Senha" required>
+                <input type="password" placeholder="Confirmar Senha" required>
+                <button type="submit" class="btn-entrar">Registrar</button>
+            </form>
+
+            <p>
+                Já tem conta?
+                <a href="#" id="irParaLogin">Faça Login</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+<script>
+    const LoginCard = document.getElementById('LoginCard');
+    const registroCard = document.getElementById('registroCard');
+    const irParaCadastro = document.getElementById('irParaCadastro');
+    const irParaLogin = document.getElementById('irParaLogin');
+
+    irParaCadastro.addEventListener('click', function(e) {
+        e.preventDefault();
+        loginCard.style.display = 'none';
+        registroCard.style.display = 'block';
+    });
+
+    irParaLogin.addEventListener('click', function(e) {
+        e.preventDefault();
+        registroCard.style.display = 'none';
+        loginCard.style.display = 'block';
+    });
+</script>
+
+</html>
