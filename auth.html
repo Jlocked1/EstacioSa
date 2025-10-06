@@ -129,16 +129,23 @@
     const irParaCadastro = document.getElementById('irParaCadastro');
     const irParaLogin = document.getElementById('irParaLogin');
 
-    irParaCadastro.addEventListener('click', function(e) {
+    irParaCadastro.addEventListener('click', function (e) {
         e.preventDefault();
         loginCard.style.display = 'none';
         registroCard.style.display = 'block';
     });
 
-    irParaLogin.addEventListener('click', function(e) {
+    irParaLogin.addEventListener('click', function (e) {
         e.preventDefault();
         registroCard.style.display = 'none';
         loginCard.style.display = 'block';
+    });
+
+    const formularioLogin = document.getElementById('LoginForm');
+
+    formularioLogin.addEventListener('submit', function (e) {
+        e.preventDefault();
+        window.location.href = 'dashboard.html';
     });
 </script>
 
