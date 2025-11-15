@@ -11,6 +11,6 @@ $senha = $_POST['senha'];
 
 if($email != NULL && $senha != NULL ) {
     echo 'Login com sucesso. Redirecionando...';
-    sleep(2.25);
+    sleep(1);
     header( 'Location: /dashboard.html' );
 }
