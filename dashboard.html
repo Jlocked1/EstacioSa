@@ -93,16 +93,16 @@
       color: white;
       padding: 20px;
       z-index: 999;
-      transition: left 0.3s ease;
+      transition: width 0.3s ease;
     }
 
     .barra-lateral.oculta {
-      left: -290px;
+      left: 0;
+      width: 50px;
     }
 
     body.barra-lateral-oculta {
-      margin-left: 0;
-      transition: margin-left 0.3s ease;
+      margin-left: 70px;
     }
 
     .menu {
@@ -125,6 +125,14 @@
 
     .menu a:hover {
       background-color: #c5a056;
+    }
+
+    .barra-lateral.oculta .menu a {
+      font-size: 0;
+    }
+
+    .barra-lateral.oculta .menu a i {
+      font-size: 1.25rem;
     }
 
     /* Botão de alternar barra lateral */
@@ -208,6 +216,13 @@
       color: #c5a056;
       font-size: 1.1rem;
     }
+
+    /*seção opções do menu */
+    .secao-conteudo {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
   </style>
 </head>
 
@@ -216,11 +231,11 @@
   <div class="barra-lateral oculta">
 
     <ul class="menu">
-      <li><a href="#home"><i class="bi bi-house-door"></i> Home</a></li>
-      <li><a href="#cursos"><i class="bi bi-book"></i> Meus Cursos</a></li>
-      <li><a href="#notas"><i class="bi bi-journal-text"></i> Notas</a></li>
-      <li><a href="#calendario"><i class="bi bi-calendar"></i> Calendário</a></li>
-      <li><a href="#biblioteca"><i class="bi bi-collection"></i> Biblioteca</a></li>
+      <li><a href="#" onclick="mostrarSecao('home')"><i class="bi bi-house-door"></i> Home</a></li>
+      <li><a href="#" onclick="mostrarSecao('cursos')"><i class="bi bi-book"></i> Meus Cursos</a></li>
+      <li><a href="#" onclick="mostrarSecao('notas')"><i class="bi bi-journal-text"></i> Notas</a></li>
+      <li><a href="#" onclick="mostrarSecao('calendario')"><i class="bi bi-calendar"></i> Calendário</a></li>
+      <li><a href="#" onclick="mostrarSecao('biblioteca')"><i class="bi bi-collection"></i> Biblioteca</a></li>
     </ul>
   </div>
 
@@ -281,7 +296,7 @@
     </div>
   </div>
 
-  <h2 style="text-align: center; margin-top: 50px; color: #203448;">Minhas Disciplinas</h2>
+  <h2 id="titulo-disciplinas" style="text-align: center; margin-top: 50px; color: #203448;">Minhas Disciplinas</h2>
 
   <div class="container-disciplinas">
     <div class="cartao-disciplina">
@@ -309,20 +324,81 @@
     </div>
   </div>
 
+  <!-- Seção Meus Cursos (oculta por padrão) -->
+  <div id="secao-cursos" class="secao-conteudo" style="display: none;">
+    <h2 style="text-align: center; margin-top: 50px; color: #203448;">Meus Cursos</h2>
+    <div class="container-disciplinas">
+      <div class="cartao-disciplina">
+        <h3>Curso 1</h3>
+        <p>Descrição do curso aqui.</p>
+      </div>
+      <div class="cartao-disciplina">
+        <h3>Curso 2</h3>
+        <p>Descrição do curso aqui.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção Notas -->
+  <div id="secao-notas" class="secao-conteudo" style="display: none;">
+    <h2 style="text-align: center; margin-top: 50px; color: #203448;">Minhas Notas</h2>
+    <p style="text-align: center; color: #666;">Conteúdo de notas aqui.</p>
+  </div>
+
+  <!-- Seção Calendário -->
+  <div id="secao-calendario" class="secao-conteudo" style="display: none;">
+    <h2 style="text-align: center; margin-top: 50px; color: #203448;">Calendário</h2>
+    <p style="text-align: center; color: #666;">Calendário acadêmico aqui.</p>
+  </div>
+
+  <!-- Seção Biblioteca -->
+  <div id="secao-biblioteca" class="secao-conteudo" style="display: none;">
+    <h2 style="text-align: center; margin-top: 50px; color: #203448;">Biblioteca</h2>
+    <p style="text-align: center; color: #666;">Acervo da biblioteca aqui.</p>
+  </div>
 </body>
 
 <script>
+  // função barra retrátil
   function alternarBarraLateral() {
     document.querySelector('.barra-lateral').classList.toggle('oculta');
     document.body.classList.toggle('barra-lateral-oculta');
   }
 
+  // função botão perfil
   function alternarMenuSuspenso() {
     const menuSuspenso = document.getElementById('menuSuspenso');
     if (menuSuspenso.style.display == 'none') {
       menuSuspenso.style.display = 'block';
     } else {
       menuSuspenso.style.display = 'none';
+    }
+  }
+
+  // função mostrar seções do menu
+  function mostrarSecao(secao) {
+    const lista = document.querySelectorAll('.secao-conteudo');
+
+    // esconde todas as seções
+    lista.forEach(function (elemento) {
+      elemento.style.display = 'none';
+    });
+
+    // se clicou em Home, mostra o conteúdo inicial
+    if (secao === 'home') {
+      document.querySelector('h1').style.display = 'block';
+      document.querySelector('.container-cartoes').style.display = 'flex';
+      document.getElementById('titulo-disciplinas').style.display = 'block';
+      document.querySelector('.container-disciplinas').style.display = 'flex';
+    } else {
+      // esconde o conteúdo inicial (home)
+      document.querySelector('h1').style.display = 'none';
+      document.querySelector('.container-cartoes').style.display = 'none';
+      document.getElementById('titulo-disciplinas').style.display = 'none';
+      document.querySelector('.container-disciplinas').style.display = 'none';
+
+      // mostra a seção clicada
+      document.getElementById('secao-' + secao).style.display = 'block';
     }
   }
 </script>
