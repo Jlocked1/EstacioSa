@@ -1,8 +1,17 @@
+/* Reset e configurações globais */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  padding-top: 80px;
-  margin-left: 270px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  padding-top: 70px;
+  margin-left: 250px;
   background-color: #f5f5f5;
   transition: margin-left 0.3s ease;
+  min-height: 100vh;
 }
 
 body.barra-lateral-oculta {
@@ -12,37 +21,41 @@ body.barra-lateral-oculta {
 h1 {
   text-align: center;
   color: #203448;
+  margin: 30px 0;
+  font-size: 2rem;
 }
 
-/* cabeçalho fixo */
+/* Cabeçalho fixo */
 .cabecalho-principal {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 250px;
   right: 0;
   height: 70px;
   background-color: #f1e8ce;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  padding-left: 270px;
-  transition: padding-left 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
 }
 
 body.barra-lateral-oculta .cabecalho-principal {
-  padding-left: 70px;
+  left: 70px;
 }
 
 .conteudo-cabecalho {
   height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
   padding: 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* barra lateral */
+.texto-cabecalho {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Barra lateral - RETRÁTIL */
 .barra-lateral {
   position: fixed;
   top: 0;
@@ -51,34 +64,52 @@ body.barra-lateral-oculta .cabecalho-principal {
   height: 100vh;
   background-color: #203448;
   color: white;
-  padding: 20px 10px;
+  padding: 20px 15px;
   z-index: 1001;
   transition: width 0.3s ease;
+  overflow: hidden;
 }
 
 .barra-lateral.oculta {
-  width: 50px;
+  width: 70px;
 }
 
-/* botão de abrir/fechar menu */
+/* Botão de alternar menu */
 .botao-alternar-menu {
   background: none;
   border: none;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: white;
   cursor: pointer;
-  padding: 12px;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: background-color 0.3s;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
-/* menu lateral */
+.barra-lateral.oculta .botao-alternar-menu {
+  justify-content: center;
+}
+
+.botao-alternar-menu:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Menu lateral */
 .menu {
   list-style: none;
   padding: 0;
-  margin-top: 30px;
+  margin: 0;
+  width: 100%;
 }
 
 .menu li {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 .menu a {
@@ -86,27 +117,46 @@ body.barra-lateral-oculta .cabecalho-principal {
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  gap: 15px;
+  padding: 12px 15px;
   border-radius: 8px;
   transition: background-color 0.3s;
+  white-space: nowrap;
 }
 
 .menu a:hover {
   background-color: #c5a056;
 }
 
+.menu a i {
+  font-size: 1.4rem;
+  min-width: 24px;
+  text-align: center;
+}
+
+/* Quando a sidebar está oculta - mostrar apenas ícones */
 .barra-lateral.oculta .menu a {
-  font-size: 0;
   justify-content: center;
   gap: 0;
+  padding: 12px 10px;
 }
 
 .barra-lateral.oculta .menu a i {
-  font-size: 1.25rem;
+  margin: 0;
+  display: block;
 }
 
-/* perfil do usuário */
+/* Esconder texto quando sidebar está fechada */
+.barra-lateral.oculta .menu a span {
+  display: none;
+}
+
+/* Garantir que o ícone sempre apareça */
+.menu a i {
+  display: inline-block;
+}
+
+/* Perfil do usuário */
 .secao-esquerda,
 .secao-direita {
   display: flex;
@@ -132,15 +182,41 @@ body.barra-lateral-oculta .cabecalho-principal {
   background-color: rgba(32, 52, 72, 0.1);
 }
 
-/* cartões de resumo */
+/* Menu suspenso */
+#menuSuspenso {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 150px;
+  z-index: 1002;
+}
+
+#menuSuspenso a {
+  display: block;
+  padding: 12px 20px;
+  color: #203448;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+#menuSuspenso a:hover {
+  background-color: #f5f5f5;
+}
+
+/* Cartões de resumo */
 .container-cartoes {
   display: flex;
   gap: 20px;
-  margin-top: 30px;
+  margin: 30px auto;
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
   padding: 0 40px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .cartao {
@@ -148,31 +224,42 @@ body.barra-lateral-oculta .cabecalho-principal {
   padding: 30px;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s, box-shadow 0.3s;
+  flex: 1;
   min-width: 200px;
   max-width: 250px;
 }
 
 .cartao:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .cartao h2 {
   color: #203448;
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .numero-grande {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #c5a056;
   margin: 0;
 }
 
-/* disciplinas */
+/* Título das disciplinas */
+#titulo-disciplinas {
+  text-align: center;
+  margin-top: 50px;
+  color: #203448;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Container de disciplinas */
 .container-disciplinas {
   display: flex;
   gap: 20px;
@@ -180,44 +267,160 @@ body.barra-lateral-oculta .cabecalho-principal {
   max-width: 1200px;
   padding: 0 40px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .cartao-disciplina {
   background-color: white;
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   flex: 1;
   min-width: 280px;
+  max-width: 350px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .cartao-disciplina:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .cartao-disciplina h3 {
   color: #203448;
   margin-bottom: 15px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .cartao-disciplina p {
   margin: 8px 0;
   color: #666;
+  font-size: 0.95rem;
+}
+
+.cartao-disciplina p strong {
+  color: #203448;
 }
 
 .cartao-disciplina .nota {
   margin-top: 15px;
   font-weight: bold;
   color: #c5a056;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
-/* conteúdo principal */
+/* Seção de conteúdo */
 .secao-conteudo {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
+}
+
+.secao-conteudo h2 {
+  text-align: center;
+  margin-top: 50px;
+  color: #203448;
+  font-size: 1.8rem;
+}
+
+/* Calendário */
+#meuCalendario {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Rodapé */
+.rodape {
+  background-color: #f5f5f5;
+  border-top: 2px solid #333;
+  padding: 30px 40px;
+  margin-top: 50px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.conteudo-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.rodape-esquerda p {
+  margin: 5px 0;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.rodape-esquerda strong {
+  font-size: 1rem;
+  color: #203448;
+}
+
+.rodape-direita p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    margin-left: 0;
+    padding-top: 70px;
+  }
+
+  body.barra-lateral-oculta {
+    margin-left: 0;
+  }
+
+  .cabecalho-principal {
+    left: 0;
+    padding-left: 60px;
+  }
+
+  body.barra-lateral-oculta .cabecalho-principal {
+    left: 0;
+  }
+
+  .barra-lateral {
+    width: 60px;
+    padding: 10px 5px;
+  }
+
+  .barra-lateral.oculta {
+    width: 0;
+    padding: 0;
+  }
+
+  .menu a {
+    padding: 12px 5px;
+    font-size: 0.7rem;
+  }
+
+  .menu a i {
+    font-size: 1.3rem;
+  }
+
+  .container-cartoes,
+  .container-disciplinas {
+    padding: 0 20px;
+  }
+
+  .conteudo-rodape {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .rodape-esquerda,
+  .rodape-direita {
+    text-align: center;
+  }
 }
