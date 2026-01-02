@@ -1,0 +1,78 @@
+/* estilos globais */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f1e8ce;
+}
+
+/* página de login */
+body.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* container */
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* cartão de login */
+.cartao-login {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.cartao-login h1 {
+  font-family: 'Playfair Display', serif;
+  color: #203448;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+/* formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #203448;
+}
+
+/* botão */
+.botao-entrar {
+  width: 100%;
+  padding: 15px;
+  background-color: #c5a056;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.botao-entrar:hover {
+  background-color: #a8843d;
+}
+
+.alert.alert-error {
+  margin: 20px;
+  color: red;
+}

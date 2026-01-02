@@ -1,0 +1,223 @@
+body {
+  padding-top: 80px;
+  margin-left: 270px;
+  background-color: #f5f5f5;
+  transition: margin-left 0.3s ease;
+}
+
+body.barra-lateral-oculta {
+  margin-left: 70px;
+}
+
+h1 {
+  text-align: center;
+  color: #203448;
+}
+
+/* cabeçalho fixo */
+.cabecalho-principal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: #f1e8ce;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding-left: 270px;
+  transition: padding-left 0.3s ease;
+}
+
+body.barra-lateral-oculta .cabecalho-principal {
+  padding-left: 70px;
+}
+
+.conteudo-cabecalho {
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* barra lateral */
+.barra-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #203448;
+  color: white;
+  padding: 20px 10px;
+  z-index: 1001;
+  transition: width 0.3s ease;
+}
+
+.barra-lateral.oculta {
+  width: 50px;
+}
+
+/* botão de abrir/fechar menu */
+.botao-alternar-menu {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+}
+
+/* menu lateral */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.menu li {
+  margin-bottom: 12px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.menu a:hover {
+  background-color: #c5a056;
+}
+
+.barra-lateral.oculta .menu a {
+  font-size: 0;
+  justify-content: center;
+  gap: 0;
+}
+
+.barra-lateral.oculta .menu a i {
+  font-size: 1.25rem;
+}
+
+/* perfil do usuário */
+.secao-esquerda,
+.secao-direita {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.secao-direita {
+  position: relative;
+}
+
+.perfil-usuario {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.perfil-usuario:hover {
+  background-color: rgba(32, 52, 72, 0.1);
+}
+
+/* cartões de resumo */
+.container-cartoes {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 40px;
+}
+
+.cartao {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  min-width: 200px;
+  max-width: 250px;
+}
+
+.cartao:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cartao h2 {
+  color: #203448;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.numero-grande {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #c5a056;
+  margin: 0;
+}
+
+/* disciplinas */
+.container-disciplinas {
+  display: flex;
+  gap: 20px;
+  margin: 30px auto 40px;
+  max-width: 1200px;
+  padding: 0 40px;
+  flex-wrap: wrap;
+}
+
+.cartao-disciplina {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 280px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cartao-disciplina:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cartao-disciplina h3 {
+  color: #203448;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.cartao-disciplina p {
+  margin: 8px 0;
+  color: #666;
+}
+
+.cartao-disciplina .nota {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #c5a056;
+  font-size: 1.1rem;
+}
+
+/* conteúdo principal */
+.secao-conteudo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
